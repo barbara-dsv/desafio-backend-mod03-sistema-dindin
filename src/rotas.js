@@ -1,9 +1,12 @@
 const express = require('express')
 
+// Controladores
+const cadastrarUsuario = require('./controladores/usuarios')
 
 const rotas = express()
 
-rotas.post('/usuario',)
+//Endpoints
+rotas.post('/usuario', cadastrarUsuario)
 
 
 module.exports = rotas
