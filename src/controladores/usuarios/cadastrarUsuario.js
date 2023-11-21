@@ -1,8 +1,9 @@
-const pool = require('../usuarios/controladores/conexao.js') // verificar se está certa essa parte de importar -Gra
+const pool = require('../../conexao')
+// verificar se está certa essa parte de importar -Gra
+
 
 const cadastrarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body
-
     try {
         const novoUsuario = await pool.query('insert into usuarios (nome, email, senha) values ($1, $2, $3) returning *', [nome, email, senha])
 
@@ -12,4 +13,4 @@ const cadastrarUsuario = async (req, res) => {
     }
 }
 
-module.exports = { cadastrarUsuario }
+module.exports = cadastrarUsuario 
