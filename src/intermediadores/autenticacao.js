@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const senhaJwt = require('../senha.jwt')
 const pool = require('../conexao')
 
-const verificarUsuario = async (req, res) => {
+const verificarUsuario = async (req, res, next) => {
     const { authorization } = req.headers;
     //Validar se o token foi enviado no header da requisição (Bearer Token)
     if (!authorization) {
@@ -20,6 +20,7 @@ const verificarUsuario = async (req, res) => {
         next()
 
     } catch (error) {
+        console.log(error.message)
         return res.status(401).json({ mensagem: 'Não autorizado' })
     }
 }
