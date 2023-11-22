@@ -9,6 +9,7 @@ const login = require('./controladores/usuarios/login')
 const detalharPerfilUsuario = require('./controladores/usuarios/detalharPerfilUsuario')
 const listarCategorias = require('./controladores/categorias/listarCategorias')
 const listarTransacoes = require('./controladores/transacoes/listarTransacoes')
+const detalharTransacao = require('./controladores/transacoes/detalharTransacao')
 
 //Endpoint cadastrar usuário
 rotas.post('/usuario', cadastrarUsuario)
@@ -24,5 +25,6 @@ rotas.put('/usuario',)
 rotas.get('/categoria', listarCategorias)
 //Endpoints de transações 
 rotas.get('/transacao', listarTransacoes)
+rotas.get('/transacao/:id', detalharTransacao)
 
 module.exports = rotas
