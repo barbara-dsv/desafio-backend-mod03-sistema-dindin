@@ -11,6 +11,7 @@ const listarCategorias = require('./controladores/categorias/listarCategorias')
 const listarTransacoes = require('./controladores/transacoes/listarTransacoes')
 const detalharTransacao = require('./controladores/transacoes/detalharTransacao')
 const atualizarUsuario = require('./controladores/usuarios/alterarUsuario')
+const cadastrarTransacao = require('./controladores/transacoes/cadastrarTransacao')
 
 //Endpoint cadastrar usuário
 rotas.post('/usuario', cadastrarUsuario)
@@ -27,7 +28,7 @@ rotas.get('/categoria', listarCategorias)
 //Endpoints de transações 
 rotas.get('/transacao', listarTransacoes)
 rotas.get('/transacao/:id', detalharTransacao)
-rotas.post('/transacao',) // Cadastrar transação para o usuário logado
+rotas.post('/transacao', cadastrarTransacao) // Cadastrar transação para o usuário logado
 rotas.put('/transacao/:id',) //Atualizar transação do usuário logado
 rotas.delete('/transacao/:id',)//Excluir transação do usuário logado
 rotas.get('/transacao/extrato',)//Obter extrato de transações
