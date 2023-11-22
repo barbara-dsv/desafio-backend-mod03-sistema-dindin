@@ -1,27 +1,30 @@
-//terminar depois - gra
-
-const express = require('express')
 const pool = require('../../conexao')
-//talvez precise importar o dumpsql mas não consegui aaaa
 
-const atualizarUsuario = (req, res) => {
+const atualizarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body
-
-    if (!nome || !email || !senha) {
-        return res.status(400).json({ mensagem: 'Todos os campos precisam ser preenchidos.' })
-    }
+    const { id } = req.params
 
     try {
-        if ()
+        const usuario = await pool.query('select * from usuarios where id = $1', [req.usuario.id])
+        const email = await pool.query('select * from usuarios.email where email =$1', [req.usuario.email])
 
-            const alteracaoUsuario = await pool.query(
-                'insert into usuarios.id (nome, email, senha) values $1, $2, $3 returning *',
-                [nome, email, senha]
-            )
+        if (!usuario) {
+            return res.status(404).json({ mensagem: 'Usuário não encontrado.' })
+        }
 
-        return res.status(201).json(alteracaoUsuario.rows[0])
+        if (email) {
+            return res.status(404).json({ mensagem: 'E-mail já cadastrado.' }) // ver codigo
+        }
+
+        const alteracaoUsuario = 'update usuarios set (nome, email, senha) values $1, $2, $3'
+
+        await pool.query(alteracaoUsuario, [nome, email, senha, id])
+
+
+        return res.status(204).send()
     } catch (error) {
-
+        return res.status(500).json({ mensagem: 'Erro do servidor' })
     }
-
 }
+
+module.exports = atualizarUsuario
