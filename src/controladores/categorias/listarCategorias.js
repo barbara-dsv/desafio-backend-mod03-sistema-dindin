@@ -7,7 +7,6 @@ const listarCategorias = async (req, res) => {
         //retorno direto na resposta porque esse rows já é um array 
         return res.status(200).json(rows)
     } catch (error) {
-        console.log(error.message)
         return res.status(500).json('Erro interno do servidor')
     }
 }
