@@ -10,7 +10,7 @@ const detalharPerfilUsuario = require('./controladores/usuarios/detalharPerfilUs
 const listarCategorias = require('./controladores/categorias/listarCategorias')
 const listarTransacoes = require('./controladores/transacoes/listarTransacoes')
 const detalharTransacao = require('./controladores/transacoes/detalharTransacao')
-const atualizarUsuario = require('./controladores/usuarios/alterarUsuario')
+const atualizarUsuario = require('./controladores/usuarios/atualizarUsuario')
 const cadastrarTransacao = require('./controladores/transacoes/cadastrarTransacao')
 
 //Endpoint cadastrar usuário
