@@ -17,6 +17,8 @@ const verificarUsuario = async (req, res, next) => {
         const { rows, rowCount } = await pool.query('select * from usuarios where id = $1', [id])
         if (rowCount < 1) return res.status(401).json({ mensagem: 'Não autorizado' })
 
+        req.usuario = rows[0]
+
         next()
 
     } catch (error) {
