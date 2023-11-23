@@ -1,0 +1,27 @@
+const pool = require('../../conexao')
+const bcrypt = require('bcrypt')
+
+const atualizarUsuario = async (req, res) => {
+    const { nome, email, senha } = req.body
+    if (!nome || !email || !senha) return res.status(400).json({ message: "Todos os campos são obrigatórios." })
+    const { id } = req.usuario
+
+    try {
+        const { rows } = await pool.query('select * from usuarios where email =$1', [email])
+
+        if (rows > 1) {
+            return res.status(404).json({ mensagem: 'O e-mail informado já está sendo utilizado por outro usuário.' })
+        }
+
+        const senhaCriptografada = await bcrypt.hash(senha, 10)
+
+        const atualizacaoDoUsuario = await pool.query('update usuarios SET nome = $1, email = $2, senha = $3 where id = $4', [nome, email, senhaCriptografada, id])
+
+        return res.status(201).send()
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json({ mensagem: 'Erro do servidor' })
+    }
+}
+
+module.exports = atualizarUsuario
