@@ -1,6 +1,5 @@
 const express = require('express')
-const verificarUsuario = require('./intermediadores/autenticacao') //importação do intermadiário autenticação
-
+const verificarUsuario = require('./intermediadores/autenticacao')
 const rotas = express()
 
 // Controladores
@@ -12,12 +11,15 @@ const listarTransacoes = require('./controladores/transacoes/listarTransacoes')
 const detalharTransacao = require('./controladores/transacoes/detalharTransacao')
 const atualizarUsuario = require('./controladores/usuarios/atualizarUsuario')
 const cadastrarTransacao = require('./controladores/transacoes/cadastrarTransacao')
+const atualizarTransacao = require('./controladores/transacoes/atualizarTransacao')
+const excluirTransacao = require('./controladores/transacoes/excluirTransacao')
+const obterExtrato = require('./controladores/transacoes/obterExtrado')
 
 //Endpoint cadastrar usuário
 rotas.post('/usuario', cadastrarUsuario)
-rotas.post('/login', login) //o login não precisa de verificação, ele que vai gerar o token para autenticar o resto dos endpoints
+rotas.post('/login', login)
 
-//intermediário (daqui pra baixo, todos usam a verificação)
+//intermediário 
 rotas.use(verificarUsuario)
 
 //Endpoints do usuário
@@ -27,10 +29,11 @@ rotas.put('/usuario', atualizarUsuario)
 rotas.get('/categoria', listarCategorias)
 //Endpoints de transações 
 rotas.get('/transacao', listarTransacoes)
+rotas.get('/transacao/extrato', obterExtrato)
 rotas.get('/transacao/:id', detalharTransacao)
-rotas.post('/transacao', cadastrarTransacao) // Cadastrar transação para o usuário logado
-rotas.put('/transacao/:id',) //Atualizar transação do usuário logado
-rotas.delete('/transacao/:id',)//Excluir transação do usuário logado
-rotas.get('/transacao/extrato',)//Obter extrato de transações
+rotas.post('/transacao', cadastrarTransacao)
+rotas.put('/transacao/:id', atualizarTransacao)
+rotas.delete('/transacao/:id', excluirTransacao)
+
 
 module.exports = rotas
