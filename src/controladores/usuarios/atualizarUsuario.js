@@ -9,7 +9,7 @@ const atualizarUsuario = async (req, res) => {
     try {
         const { rows } = await pool.query('select * from usuarios where email =$1', [email])
 
-        if (rows > 1) {
+        if (rows.length > 0) {
             return res.status(404).json({ mensagem: 'O e-mail informado já está sendo utilizado por outro usuário.' })
         }
 
