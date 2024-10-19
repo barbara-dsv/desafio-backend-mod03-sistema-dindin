@@ -4,15 +4,42 @@
 
 # Desafio Módulo 3 - Backend
 
-## Como entregar?
+### ⚠️ Importante: Desafio já foi concluído, enviado e corrigido pela instituição de ensino
 
-- [ ] Faça o fork desse repositório para o seu GitHub
-- [ ] Clone o seu repositório em sua máquina
-- [ ] Desenvolva seu projeto, fazendo commits a cada alteração e push
-- [ ] Crie um PR (pull request)
-- [ ] Envie o link do pull request que você criou na plataforma da Cubos
+## Passos para rodar o projeto localmente
 
-### ⚠️ Importante: Se o pull request não for criado e enviado na plataforma o feedback não será fornecido e constará como não entregue
+### 1. Clonar o repositório
+
+Primeiro, você deve clonar o repositório na sua máquina local:
+
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+```
+
+### 2. Instalar dependências 
+
+Instale as dependências do projeto utilizando o npm:
+
+```bash
+npm install
+```
+
+### 3. Rodar o servidor
+Agora, você pode iniciar o servidor com o seguinte comando:
+
+```bash
+npm run dev
+```
+
+Isso irá rodar o servidor localmente. O projeto estará disponível na URL padrão http://localhost:3000 
+
+### 5. Utilizando as rotas
+Para testar as rotas da API, você pode utilizar o Insomnia ou qualquer outro cliente REST API:
+
+ 1. Abra o Insomnia.
+ 2. Adicione manualmente as rotas da API e o endereço base: http://localhost:3000.
+ 3. Teste as rotas conforme necessário.
 
 ## Descrição do desafio
 
@@ -33,11 +60,8 @@ Seu papel é construir uma RESTful API que permita:
 
 **Importante: Lembre-se sempre que cada usuário só pode ver e manipular seus próprios dados e suas próprias transações. Não atender a este pré-requisito é uma falha de segurança gravíssima!**
 
-**Importante 2: O diretório ".github" e seu conteúdo não podem ser alterados e muito menos excluídos**
+**Importante 2: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
 
-**Importante 3: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
-
-**Importante 4: O link de acesso a esta API se encontra no final deste README. Este link é somente para testes!**
 
 **Exemplo:**
 
@@ -768,12 +792,6 @@ Na funcionalidade de listagem de transações do usuário logado (**GET /transac
 // HTTP Status 200 / 201 / 204
 [];
 ```
-
----
-
-Link do deploy da API somente para testes: [ link](https://desafio-backend-03-dindin.pedagogico.cubos.academy/)
-
-**Este link é somente para testes (ou seja, será possível realizar requisições a esta API através deste link)**
 
 ---
 
